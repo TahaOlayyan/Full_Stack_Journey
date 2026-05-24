@@ -18,7 +18,8 @@ Here is a list of the milestones I've completed so far:
 | # | Project Name | Description | Technologies | Link |
 |---|--------------|-------------|--------------|------|
 | 1 | [PHP To-Do List (CRUD)](./01-PHP-TodoList-CRUD) | A fully functional task manager with Create, Read, Update, and Delete operations. | PHP, MySQL, Bootstrap 5 | [View Project](./01-PHP-TodoList-CRUD) |
-| 2 | *Coming Soon...* | Keep an eye out for the next challenge! | ??? | --- |
+| 2 | [Mini E-Commerce Admin Panel](https://github.com/TahaOlayyan/Full_Stack_Journey/tree/main/Mini_E-Commerce_Admin_Panel) | A responsive Content Management System (CMS) for managing store products with full CRUD operations. | PHP, MySQL, Bootstrap 5 | [View Project](https://github.com/TahaOlayyan/Full_Stack_Journey/tree/main/Mini_E-Commerce_Admin_Panel) |
+| 3 | *Coming Soon...* | Keep an eye out for the next challenge! | ??? | --- |
 
 ---
 > *"The expert in anything was once a beginner."* > Follow along as this repository grows! 🌱
