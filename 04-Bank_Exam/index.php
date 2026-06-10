@@ -62,7 +62,10 @@ $stats = mysqli_fetch_assoc($result_stats);
                         <td><?php echo $row['Tax'] ?></td>
                         <td><?php echo $row['AccountType'] ?></td>
                         <td><img src="Upload/<?php echo $row['Photo'] ?>" width="70" height="70" alt=""></td>
-                        <td><a href="deleteUser.php?id=<?php echo $row['id'] ?>">Delete</a></td>
+                        <td>
+                            <a href="deleteUser.php?id=<?php echo $row['id'] ?>">Delete</a>
+                            <a href="UpdateUser.php?id=<?php echo $row['id'] ?>">Update</a>
+                        </td>
                     </tr>
 
                 <?php
