@@ -1,0 +1,68 @@
+/* style.css */
+body {
+    background-color: #0b0c10;
+    color: #c5c6c7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1f2833 !important;
+    border-bottom: 2px solid #66fcf1;
+    box-shadow: 0 4px 8px rgba(102, 252, 241, 0.2);
+}
+.navbar-brand, .nav-link {
+    color: #66fcf1 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.nav-link:hover {
+    color: #45a29e !important;
+    text-shadow: 0 0 8px #66fcf1;
+}
+
+/* Cards (Gaming Style) */
+.card {
+    background: #1f2833;
+    border: 1px solid #45a29e;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(69, 162, 158, 0.2);
+}
+.card-header {
+    background-color: #0b0c10;
+    border-bottom: 1px solid #45a29e;
+    color: #66fcf1;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn-neon {
+    background-color: transparent;
+    color: #66fcf1;
+    border: 2px solid #66fcf1;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.btn-neon:hover {
+    background-color: #66fcf1;
+    color: #0b0c10;
+    box-shadow: 0 0 10px #66fcf1;
+}
+
+/* Tables */
+.table {
+    color: #c5c6c7;
+    border-color: #45a29e;
+}
+.table-dark th {
+    background-color: #1f2833;
+    color: #66fcf1;
+    border-bottom: 2px solid #66fcf1;
+}
+.table-hover tbody tr:hover {
+    background-color: rgba(69, 162, 158, 0.1);
+    color: #fff;
+}
