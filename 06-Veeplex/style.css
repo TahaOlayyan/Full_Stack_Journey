@@ -1,0 +1,145 @@
+:root {
+    --veeplex-blue: #1b6cb3; 
+    --veeplex-orange: #e59500;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px; 
+}
+
+body {
+    padding-top: 0 !important;
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-logo {
+    height: 90px; 
+    object-fit: contain; 
+}
+
+.custom-logo {
+    height: 60px;
+    transform: scale(2); 
+    transform-origin: left center; 
+}
+
+.text-veeplex-blue { color: var(--veeplex-blue) !important; }
+.text-veeplex-orange { color: var(--veeplex-orange) !important; }
+
+
+
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(1, 32, 59, 0.7);
+    z-index: 1;
+}
+
+.content-above {
+    z-index: 2;
+}
+
+.content-section {
+    padding: 100px 0; 
+    min-height: 80vh; 
+}
+
+.cinematic-text {
+    opacity: 0; 
+    animation: cinematicReveal 1.5s cubic-bezier(0.2, 1, 0.2, 1) forwards;
+    animation-delay: 0.3s; 
+}
+
+@keyframes cinematicReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        letter-spacing: -3px; 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        letter-spacing: normal; 
+    }
+}
+
+
+.cinematic-elem {
+    opacity: 0; 
+    animation: fadeUpCinematic 1.2s cubic-bezier(0.2, 1, 0.2, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; } 
+.delay-2 { animation-delay: 0.6s; } 
+.delay-3 { animation-delay: 0.9s; } 
+
+h1.cinematic-elem {
+    animation-name: titleRevealCinematic;
+}
+
+@keyframes titleRevealCinematic {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        letter-spacing: -3px;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        letter-spacing: normal;
+    }
+}
+
+@keyframes fadeUpCinematic {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 991px) {
+    #mainNavbar {
+        background-color: rgba(27, 108, 179, 0.95); 
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.custom-nav-link {
+    transition: color 0.3s ease-in-out;
+}
+
+.custom-nav-link:hover {
+    color: var(--veeplex-orange) !important;
+}
