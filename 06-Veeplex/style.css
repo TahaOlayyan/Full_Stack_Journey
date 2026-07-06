@@ -1,41 +1,86 @@
+/* ==========================================================================
+   1. GLOBAL VARIABLES & BASE STYLES
+   Description: Sets the color palette and basic HTML/Body behavior.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
+
 :root {
+    /* Primary Brand Colors */
     --veeplex-blue: #1b6cb3; 
     --veeplex-orange: #e59500;
+    
+    /* Secondary/Accent Colors */
+    --veeplex-dark-blue: #0a1f35;
+    --veeplex-light-orange: #d0820c;
+    --veeplex-dark-orange: #a65c00;
 }
 
 html {
     scroll-behavior: smooth;
+    /* Prevents the fixed navbar from hiding section titles when clicking links */
     scroll-padding-top: 85px; 
 }
 
 body {
+    font-family: 'Montserrat', sans-serif;
     padding-top: 0 !important;
 }
 
-.hero-section {
-    position: relative;
-    height: 100vh; 
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.custom-logo {
-    height: 90px; 
-    object-fit: contain; 
-}
-
-.custom-logo {
-    height: 60px;
-    transform: scale(2); 
-    transform-origin: left center; 
-}
-
+/* Utility Classes */
 .text-veeplex-blue { color: var(--veeplex-blue) !important; }
 .text-veeplex-orange { color: var(--veeplex-orange) !important; }
 
 
+/* ==========================================================================
+   2. NAVIGATION & HEADER
+   Description: Styling for the top navigation bar and logo.
+   ========================================================================== */
+.custom-logo {
+    height: 150px; 
+    object-fit: contain; 
+}
+
+.custom-nav-link {
+    transition: color 0.3s ease-in-out;
+}
+
+/* Hover color for navigation links */
+.custom-nav-link:hover {
+    color: var(--veeplex-orange) !important;
+}
+
+/* Mobile Navbar Background override (Dark blue box on small screens) */
+@media (max-width: 991px) {
+    #mainNavbar {
+        background-color: rgba(27, 108, 179, 0.95); 
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 15px !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+}
+
+
+/* ==========================================================================
+   3. HERO SECTION (HOME)
+   Description: The first section with the background video and diagonal cut.
+   ========================================================================== */
+.hero-section {
+    position: relative;
+    /* Adds 80px to height to account for the diagonal cut at the bottom */
+    height: calc(100vh + 80px); 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Creates the V-Shape cut at the bottom of the section */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), 50% 100%, 0 calc(100% - 80px));
+    
+    /* Pulls the next section up to fill the empty white space created by the cut */
+    margin-bottom: -80px; 
+    z-index: 10; 
+}
 
 .bg-video {
     position: absolute;
@@ -48,42 +93,19 @@ body {
     z-index: 0;
 }
 
+/* Dark overlay on top of the video to make text readable */
 .video-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(1, 32, 59, 0.7);
+    background-color: rgba(1, 32, 59, 0.7); 
     z-index: 1;
 }
 
 .content-above {
-    z-index: 2;
+    z-index: 2; /* Ensures text stays above the video overlay */
 }
 
-.content-section {
-    padding: 100px 0; 
-    min-height: 80vh; 
-}
-
-.cinematic-text {
-    opacity: 0; 
-    animation: cinematicReveal 1.5s cubic-bezier(0.2, 1, 0.2, 1) forwards;
-    animation-delay: 0.3s; 
-}
-
-@keyframes cinematicReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-        letter-spacing: -3px; 
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        letter-spacing: normal; 
-    }
-}
-
-
+/* --- Cinematic Animations for Hero Text --- */
 .cinematic-elem {
     opacity: 0; 
     animation: fadeUpCinematic 1.2s cubic-bezier(0.2, 1, 0.2, 1) forwards;
@@ -93,53 +115,216 @@ body {
 .delay-2 { animation-delay: 0.6s; } 
 .delay-3 { animation-delay: 0.9s; } 
 
-h1.cinematic-elem {
-    animation-name: titleRevealCinematic;
-}
-
-@keyframes titleRevealCinematic {
-    0% {
-        opacity: 0;
-        transform: translateY(40px) scale(0.95);
-        letter-spacing: -3px;
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        letter-spacing: normal;
-    }
-}
-
 @keyframes fadeUpCinematic {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ==========================================================================
+   4. ABOUT US SECTION
+   Description: Split layout, frosted glass effect, and outline typography.
+   ========================================================================== */
+.about-section-bg {
+    position: relative;
+    background: url('Uploads/AboutUsBG.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Parallax effect */
+    z-index: 1;
+}
+
+/* Dark tint over the background image */
+.about-section-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.15); 
+    z-index: 2;
+}
+
+/* --- Left Column: Frosted Glass Panel --- */
+.glass-panel {
+    background-color: rgba(0, 0, 0, 0.45); 
+    backdrop-filter: blur(12px); /* Creates the frosted glass effect */
+    -webkit-backdrop-filter: blur(12px); /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+}
+
+/* --- Left Column: Outline Text Effect --- */
+.text-outline {
+    color: transparent; /* Makes the fill color transparent */
+    -webkit-text-stroke: 1.5px var(--veeplex-orange); /* Draws the orange border */
+    text-shadow: none; 
+    font-size: 35px;
+    font-weight: 900;
+}
+
+/* --- Left Column: Hand-drawn SVG Arrow --- */
+.about-arrow {
+    position: absolute;
+    top: -5px; 
+    left: -10px; 
+    width: 50px;
+    height: 80px;
+    z-index: 10;
+    transform: rotate(5deg); 
+}
+
+/* --- Right Column: Vision & Mission Cards --- */
+.vision-mission-card {
+    background-color: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    border-left: 4px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+}
+
+/* Card Hover Animation */
+.vision-mission-card:hover {
+    transform: translateX(-10px); /* Moves card slightly to the left */
+    background-color: rgba(0, 0, 0, 0.55); 
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.vision-mission-card:nth-child(1):hover { border-left-color: var(--veeplex-blue); }
+.vision-mission-card:nth-child(2):hover { border-left-color: var(--veeplex-orange); }
+
+/* Text Shadows for Readability over complex backgrounds */
+.vision-mission-card h5 { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); }
+.card-text-glass {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500; 
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9); 
+}
+
+.bg-glass-icon {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+/* ==========================================================================
+   5. OUR SERVICES (INTERACTIVE TIMELINE)
+   Description: Vertical timeline with scroll-triggered glowing effects.
+   ========================================================================== */
+.timeline-container {
+    position: relative;
+    padding: 20px 0;
+}
+
+/* ==========================================================================
+   TIMELINE LINE & SCROLL PROGRESS
+   Description: The central base line and the glowing animated progress line.
+   ========================================================================== */
+
+/* The static vertical line in the center (Dim background) */
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent white */
+    margin-left: -1px; /* Centers the 2px line perfectly */
+    z-index: 1; 
+}
+
+/* The glowing progress line controlled by JavaScript */
+.timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%; /* Starts at 0%, JS updates this on scroll */
+    background: var(--veeplex-orange); /* Brand orange color */
+    box-shadow: 0 0 10px var(--veeplex-orange); /* Glowing effect */
+    transition: height 0.1s ease-out; /* Smooth following movement */
+}
+
+/* --- Initial "Dimmed" State before scrolling into view --- */
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0.2; /* Dimmed initially */
+    transform: translateY(20px); /* Starts slightly lower */
+    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.timeline-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--veeplex-orange);
+    opacity: 0.2; /* Dimmed initially */
+    transition: all 0.6s ease;
+    z-index: 2;
+}
+
+/* --- Active "Glowing" State triggered by JavaScript Observer --- */
+.service-card.active {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Moves to original position */
+    border: 1px solid rgba(229, 149, 0, 0.5); /* Orange border */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Extra hover effect after it becomes active */
+.service-card.active:hover {
+    border-color: var(--veeplex-blue);
+    transform: scale(1.02);
+}
+
+.timeline-dot.active {
+    opacity: 1; /* Fully visible */
+    box-shadow: 0 0 20px 5px rgba(229, 149, 0, 0.8); /* Strong glowing effect */
+    transform: scale(1.5); /* Makes the dot slightly larger */
+    background: #fff; /* Changes dot center to white */
+    border: 3px solid var(--veeplex-orange);
+}
+
+/* Custom Scrollbar for Modals */
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+.modal-body::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); 
+}
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--veeplex-orange); 
+    border-radius: 10px;
+}
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--veeplex-light-orange); 
+}
+
+
+/* ==========================================================================
+   6. MOBILE RESPONSIVE FIXES
+   ========================================================================== */
+@media (max-width: 991px) {
+    /* Hero Section adjustment for mobile */
+    .hero-section {
+        height: calc(100vh + 40px);
+        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 50% 100%, 0 calc(100% - 40px));
+        margin-bottom: -40px;
     }
-    100% {
-        opacity: 1;
+    
+    .about-section-bg { padding-top: 80px !important; }
+    
+    /* Services Timeline fix for mobile: Hide the line and center cards */
+    .timeline-line { display: none !important; }
+    .timeline-dot { display: none !important; }
+    .service-card { 
+        text-align: center; 
+        /* Force active state on mobile immediately to avoid scrolling issues */
+        opacity: 1; 
         transform: translateY(0);
     }
-}
-
-@media (max-width: 991px) {
-    #mainNavbar {
-        background-color: rgba(27, 108, 179, 0.95); 
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 15px !important;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-}
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-
-body {
-    font-family: 'Montserrat', sans-serif;
-}
-
-.custom-nav-link {
-    transition: color 0.3s ease-in-out;
-}
-
-.custom-nav-link:hover {
-    color: var(--veeplex-orange) !important;
 }
