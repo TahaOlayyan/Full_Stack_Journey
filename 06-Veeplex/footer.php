@@ -30,7 +30,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="index.php" method="POST">
+                <form action="process_contact.php" method="POST">
                     <div class="mb-3">
                         <label class="form-label fw-bold text-dark">Your Name</label>
                         <input type="text" name="sender_name" class="form-control bg-light" required>

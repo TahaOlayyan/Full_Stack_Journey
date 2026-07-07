@@ -1,39 +1,25 @@
 <?php
 /* ====================================================================
  * PAGE: INDEX (HOME)
- * Description: The main landing page. Handles contact form submission 
- * and includes dynamic sections.
  * ==================================================================== */
 
-// --- CONTACT FORM HANDLER ---
-if (isset($_POST['submit_contact'])) {
-    $name = htmlspecialchars(trim($_POST['sender_name']));
-    $email = filter_var(trim($_POST['sender_email']), FILTER_SANITIZE_EMAIL);
-    $message = htmlspecialchars(trim($_POST['message']));
-
-    $to = "sales@veeplex.com";
-    $subject = "New Lead from Veeplex Website: $name";
-
-    $headers = "From: no-reply@veeplex.com\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-
-    $email_body = "You have received a new message from the website contact form.\n\n" .
-        "Name: $name\n" .
-        "Email: $email\n" .
-        "Message:\n$message\n";
-
-    if (mail($to, $subject, $email_body, $headers)) {
-        echo "<script>alert('Thank you! Your message has been sent to our team.');</script>";
-    } else {
-        echo "<script>alert('Notice: Message saved. (Email sending will work once deployed to the live server).');</script>";
-    }
-}
+// استدعاء ملف الإعدادات
+require 'init.php';
 
 // Include the Header (Meta tags, Navbar)
 include 'header.php';
 ?>
 
+<?php if (isset($_SESSION['form_msg'])): ?>
+    <div class="alert alert-<?php echo $_SESSION['msg_type']; ?> alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x shadow" style="z-index: 1050; margin-top: 20px; min-width: 300px; text-align: center;" role="alert">
+        <strong><?php echo $_SESSION['form_msg']; ?></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php
+    unset($_SESSION['form_msg']);
+    unset($_SESSION['msg_type']);
+    ?>
+<?php endif; ?>
 <!-- 
   ====================================================================
   SECTION 1: HERO (HOME)
@@ -77,7 +63,7 @@ include 'header.php';
                         <span class="text-outline">ABOUT US</span>
                     </h6>
                     <svg class="about-arrow" viewBox="0 0 100 100">
-                        <path d="M 80 20 Q 20 20 20 80" fill="none" stroke="#e59500" stroke-width="4" stroke-linecap="round" />
+                        <path d="M 80 20 Q 20 20 20 80" fill="none" stroke="#1b6cb3" stroke-width="4" stroke-linecap="round" />
                         <path d="M 20 80 L 28 65 M 20 80 L 12 65" fill="none" stroke="#e59500" stroke-width="4" stroke-linecap="round" />
                     </svg>
                 </div>
@@ -139,6 +125,37 @@ include 'header.php';
                         <p class="text-white small">Designing and delivering smart technologies...</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 
+  ====================================================================
+  SECTION 3: Our Clients 
+  ==================================================================== 
+-->
+<section id="clients" class="py-5" style="background: linear-gradient(135deg, var(--veeplex-blue) 0%, var(--veeplex-dark-blue) 100%); overflow: hidden;">
+    <div class="container position-relative z-2">
+        <h6 class="text-center text-white fw-bold mb-4 opacity-75" style="letter-spacing: 4px; font-size: 1rem;">TRUSTED BY INNOVATIVE COMPANIES</h6>
+
+        <div class="client-ticker-wrapper">
+            <div class="client-ticker-track">
+                <div class="client-logo-box"><img src="Uploads/C1_umniah.png" alt="Client 1"></div>
+                <div class="client-logo-box"><img src="Uploads/C2_uWallet.png" alt="Client 2"></div>
+                <div class="client-logo-box"><img src="Uploads/C3_Orange.png" alt="Client 3"></div>
+                <div class="client-logo-box"><img src="Uploads/C4_orangeMoney.png" alt="Client 4"></div>
+                <div class="client-logo-box"><img src="Uploads/C5_jopacc.png" alt="Client 5"></div>
+                <div class="client-logo-box"><img src="Uploads/C6_madfoat.png" alt="Client 6"></div>
+                <div class="client-logo-box"><img src="Uploads/C7_AqabaHub.png" alt="Client 7"></div>
+
+                <div class="client-logo-box"><img src="Uploads/C1_umniah.png" alt="Client 1"></div>
+                <div class="client-logo-box"><img src="Uploads/C2_uWallet.png" alt="Client 2"></div>
+                <div class="client-logo-box"><img src="Uploads/C3_Orange.png" alt="Client 3"></div>
+                <div class="client-logo-box"><img src="Uploads/C4_orangeMoney.png" alt="Client 4"></div>
+                <div class="client-logo-box"><img src="Uploads/C5_jopacc.png" alt="Client 5"></div>
+                <div class="client-logo-box"><img src="Uploads/C6_madfoat.png" alt="Client 6"></div>
+                <div class="client-logo-box"><img src="Uploads/C7_AqabaHub.png" alt="Client 7"></div>
             </div>
         </div>
     </div>
@@ -321,6 +338,7 @@ include 'header.php';
         </div>
     </div>
 </div>
+
 <!-- 
   ====================================================================
   JAVASCRIPT: SCROLL INTERSECTION OBSERVER
@@ -352,12 +370,6 @@ include 'header.php';
                     if (dot) {
                         dot.classList.add('active');
                     }
-                } else {
-                    // Optional: Remove active class when scrolling away to replay animation
-                    // entry.target.querySelector('.service-card').classList.remove('active');
-                    // const targetId = entry.target.id;
-                    // const dot = document.querySelector(`.timeline-dot[data-target="${targetId}"]`);
-                    // if (dot) dot.classList.remove('active');
                 }
             });
         }, observerOptions);
@@ -368,31 +380,25 @@ include 'header.php';
             timelineObserver.observe(row);
         });
     });
+
     /* ====================================================================
-           TIMELINE PROGRESS LINE SCRIPT
-           Description: Calculates scroll distance and grows the timeline line.
-           ==================================================================== */
+       TIMELINE PROGRESS LINE SCRIPT
+       Description: Calculates scroll distance and grows the timeline line.
+       ==================================================================== */
     const timelineContainer = document.querySelector('.timeline-container');
     const timelineProgress = document.getElementById('timelineProgress');
 
     if (timelineContainer && timelineProgress) {
         window.addEventListener('scroll', () => {
-            // Get the container's exact position relative to the screen
             const rect = timelineContainer.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            // Calculate how much we scrolled INSIDE the timeline container.
-            // It starts growing when the top of the container hits the middle of the screen.
             let scrolled = (windowHeight / 2) - rect.top;
             let totalDistance = rect.height;
 
-            // Clamp the value so it doesn't go below 0 or beyond the total height
             let progress = Math.max(0, Math.min(scrolled, totalDistance));
-
-            // Convert the scrolled distance into a percentage
             let percentage = (progress / totalDistance) * 100;
 
-            // Update the CSS height of the glowing line
             timelineProgress.style.height = percentage + '%';
         });
     }

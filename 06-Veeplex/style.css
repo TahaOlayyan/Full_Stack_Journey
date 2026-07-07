@@ -140,7 +140,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.15); 
+    background: rgba(0, 0, 0, 0.20); 
     z-index: 2;
 }
 
@@ -158,17 +158,17 @@ body {
     color: transparent; /* Makes the fill color transparent */
     -webkit-text-stroke: 1.5px var(--veeplex-orange); /* Draws the orange border */
     text-shadow: none; 
-    font-size: 35px;
-    font-weight: 900;
+    font-size: 45px;
+    font-weight: 750;
 }
 
 /* --- Left Column: Hand-drawn SVG Arrow --- */
 .about-arrow {
     position: absolute;
-    top: -5px; 
-    left: -10px; 
+    top: 0px; 
+    left: 0px; 
     width: 50px;
-    height: 80px;
+    height: 90px;
     z-index: 10;
     transform: rotate(5deg); 
 }
@@ -304,6 +304,62 @@ body {
     background: var(--veeplex-light-orange); 
 }
 
+/* ==========================================================================
+   7. OUR CLIENTS TICKER 
+   Description: Infinite scrolling animation, original colors, scale on hover.
+   ========================================================================== */
+
+.client-ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.client-ticker-track {
+    display: flex;
+    gap: 40px; 
+    width: max-content;
+    animation: scrollTicker 20s linear infinite reverse;
+}
+
+.client-ticker-track:hover {
+    animation-play-state: paused;
+}
+
+.client-logo-box {
+    width: 180px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    flex-shrink: 0;
+    position: relative; 
+}
+
+.client-logo-box:hover {
+
+    transform: scale(1.15);
+    z-index: 10; 
+}
+
+.client-logo-box img {
+    max-width: 85%; 
+    max-height: 85%;
+    object-fit: contain;
+}
+
+@keyframes scrollTicker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 20px)); 
+    }
+}
 
 /* ==========================================================================
    6. MOBILE RESPONSIVE FIXES
@@ -328,3 +384,4 @@ body {
         transform: translateY(0);
     }
 }
+
