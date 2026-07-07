@@ -4,27 +4,28 @@ Welcome to my personal repository! This space is dedicated to documenting my pat
 
 ## 🎯 Goal
 
-To build a strong portfolio of real-world applications, master both Frontend and Backend technologies, and constantly improve my problem-solving skills.
+To build a strong portfolio of real-world applications, master both Frontend and Backend technologies, and constantly improve my problem-solving skills to deliver production-ready software.
 
 ## 💻 Tech Stack (Growing...)
 
-- **Frontend:** HTML5, CSS3, Bootstrap 5, Custom CSS.
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, Custom CSS (Glassmorphism, Advanced Animations).
 - **Backend:** PHP.
 - **Database:** MySQL.
-- **Tools:** Git, GitHub, XAMPP, VS Code.
+- **Libraries/Tools:** AOS (Animate On Scroll), Git, GitHub, XAMPP, VS Code.
 
 ## 📂 Projects Directory
 
-Here is a list of the milestones I've completed so far:
+Here is a list of the milestones and projects I've completed:
 
-| #   | Project Name                                                    | Description                                                                                                                                                              | Technologies            | Link                                             |
-| --- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------- | ------------------------------------------------ |
-| 1   | [PHP To-Do List (CRUD)](./01-PHP-TodoList-CRUD)                 | A fully functional task manager with Create, Read, Update, and Delete operations.                                                                                        | PHP, MySQL, Bootstrap 5 | [View Project](./01-PHP-TodoList-CRUD)           |
-| 2   | [Mini E-Commerce Admin Panel](./02-Mini_E-Commerce_Admin_Panel) | A responsive Content Management System (CMS) for managing store products with full CRUD operations.                                                                      | PHP, MySQL, Bootstrap 5 | [View Project](./02-Mini_E-Commerce_Admin_Panel) |
-| 3   | [Art Gallery Management System](./03-Art-Gallery-Management)    | A modern, role-based system (Admin/Collector) handling artwork reservations, profile management, and secure image uploads with a fully responsive UI.                    | PHP, MySQL, Bootstrap 5 | [View Project](./03-Art-Gallery-Management)      |
-| 4   | [Bank Account Management System (Final Exam)](./04-Bank_Exam)   | A secure, session-protected admin system built for university final exams. Features comprehensive user CRUD, dynamic country-based tax logic, and statistical reporting. | Core PHP, MySQL, HTML   | [View Project](./04-Bank_Exam)                   |
-| 5   | [E-Sports Tournament Manager](./05-ESports-Tournament-Manager)  | A dynamic, role-based platform (Admin/Captain) to manage e-sports tournaments, team registrations, and secure profiles featuring a custom dark/neon gaming UI.           | PHP, MySQL, Bootstrap 5 | [View Project](./05-ESports-Tournament-Manager)  |
-| 6   | _Coming Soon..._                                                | Keep an eye out for the next challenge!                                                                                                                                  | ???                     | ---                                              |
+| #   | Project Name                                                    | Description                                                                                                                                                                                                                                  | Technologies                          | Link                                             |
+| --- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------ |
+| 1   | [PHP To-Do List (CRUD)](./01-PHP-TodoList-CRUD)                 | A fully functional task manager with Create, Read, Update, and Delete operations.                                                                                                                                                            | PHP, MySQL, Bootstrap 5               | [View Project](./01-PHP-TodoList-CRUD)           |
+| 2   | [Mini E-Commerce Admin Panel](./02-Mini_E-Commerce_Admin_Panel) | A responsive Content Management System (CMS) for managing store products with full CRUD operations.                                                                                                                                          | PHP, MySQL, Bootstrap 5               | [View Project](./02-Mini_E-Commerce_Admin_Panel) |
+| 3   | [Art Gallery Management System](./03-Art-Gallery-Management)    | A modern, role-based system (Admin/Collector) handling artwork reservations, profile management, and secure image uploads with a fully responsive UI.                                                                                        | PHP, MySQL, Bootstrap 5               | [View Project](./03-Art-Gallery-Management)      |
+| 4   | [Bank Account Management System (Final Exam)](./04-Bank_Exam)   | A secure, session-protected admin system built for university final exams. Features comprehensive user CRUD, dynamic country-based tax logic, and statistical reporting.                                                                     | Core PHP, MySQL, HTML                 | [View Project](./04-Bank_Exam)                   |
+| 5   | [E-Sports Tournament Manager](./05-ESports-Tournament-Manager)  | A dynamic, role-based platform (Admin/Captain) to manage e-sports tournaments, team registrations, and secure profiles featuring a custom dark/neon gaming UI.                                                                               | PHP, MySQL, Bootstrap 5               | [View Project](./05-ESports-Tournament-Manager)  |
+| 6   | 🏢 **[Veeplex Corporate Website](./06-Veeplex-Corporate-Site)**   | **(Real-World Project)** A high-performance, modern landing page built for a tech agency. Features advanced Glassmorphism UI, interactive scroll-linked timelines, scrollable content Modals, and cinematic viewport-triggered animations. | HTML, CSS, JavaScript, PHP, Bootstrap | [View Project](./06-Veeplex-Corporate-Site)      |
+| 7   | _Coming Soon..._                                                | Keep an eye out for the next challenge!                                                                                                                                                                                                      | ???                                   | ---                                              |
 
 ---
 
