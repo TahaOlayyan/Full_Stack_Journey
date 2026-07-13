@@ -8,6 +8,7 @@
     /* Primary Brand Colors */
     --veeplex-blue: #1b6cb3; 
     --veeplex-orange: #e59500;
+    /*--veeplex-orange: #f4bc3b;*/
     
     /* Secondary/Accent Colors */
     --veeplex-dark-blue: #0a1f35;
@@ -67,19 +68,13 @@ body {
    ========================================================================== */
 .hero-section {
     position: relative;
-    /* Adds 80px to height to account for the diagonal cut at the bottom */
-    height: calc(100vh + 80px); 
+    height: 100vh; 
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Creates the V-Shape cut at the bottom of the section */
-    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 80px), 50% 100%, 0 calc(100% - 80px));
-    
-    /* Pulls the next section up to fill the empty white space created by the cut */
-    margin-bottom: -80px; 
     z-index: 10; 
+    
 }
 
 .bg-video {
@@ -123,7 +118,6 @@ body {
 
 /* ==========================================================================
    4. ABOUT US SECTION
-   Description: Split layout, frosted glass effect, and outline typography.
    ========================================================================== */
 .about-section-bg {
     position: relative;
@@ -153,74 +147,209 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
 }
 
-/* --- Left Column: Outline Text Effect --- */
-.text-outline {
-    color: transparent; /* Makes the fill color transparent */
-    -webkit-text-stroke: 1.5px var(--veeplex-orange); /* Draws the orange border */
-    text-shadow: none; 
-    font-size: 45px;
-    font-weight: 750;
+/*  --- Left Column: Outline Text Effect --- 
+    --- MODERN GLASS PANEL (About Us) ---
+========================================================================== */
+.glass-panel-modern {
+    background: rgba(13, 22, 32, 0.55); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.2); 
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 }
 
-/* --- Left Column: Hand-drawn SVG Arrow --- */
-.about-arrow {
-    position: absolute;
-    top: 0px; 
-    left: 0px; 
-    width: 50px;
-    height: 90px;
-    z-index: 10;
-    transform: rotate(5deg); 
+.glass-panel-modern:hover {
+    transform: translateY(-5px);
+}
+.veeplex-glass-box {
+    background-color: rgba(0, 0, 0, 0.5); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* مهم عشان يشتغل على سفاري */
+    transition: all 0.3s ease;
+}
+
+.veeplex-glass-box:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: var(--veeplex-orange);
 }
 
 /* --- Right Column: Vision & Mission Cards --- */
-.vision-mission-card {
-    background-color: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.15); 
-    border-left: 4px solid rgba(255, 255, 255, 0.2);
+/* ==========================================================================
+MODERN VISION & MISSION CARDS
+========================================================================== */
+
+.modern-vm-card {
+    background: rgba(13, 22, 32, 0.45); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.modern-vm-card:hover {
+    transform: translateX(-10px);
+    background: rgba(13, 22, 32, 0.65);
+}
+
+.modern-vm-card:nth-child(1) { border-left: 4px solid var(--veeplex-blue); }
+.modern-vm-card:nth-child(2) { border-left: 4px solid var(--veeplex-orange); }
+
+.modern-vm-card {
+    position: relative;
+    overflow: hidden; 
+    z-index: 1;
+}
+
+.modern-vm-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    
+    background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+        rgba(229, 149, 0, 0.15), 
+        transparent 40%
+    );
+    
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1; 
+    pointer-events: none;
+}
+
+.modern-vm-card:hover::before {
+    opacity: 1;
+}
+.icon-box {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vision-icon { filter: drop-shadow(0 0 10px rgba(27, 108, 179, 0.8)); }
+.mission-icon { filter: drop-shadow(0 0 10px rgba(229, 149, 0, 0.8)); }
+
+.vm-cards-wrapper {
+    transform: translate(120px, 20px); 
+    
+    transition: transform 0.3s ease;
+}
+
+/* ==========================================================================
+   CAPSULE CLIENTS TICKER (Premium Design)
+   ========================================================================== */
+.glass-ticker-capsule {
+    background-color: rgba(13, 22, 32, 1); 
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); 
+    padding: 25px 0;
+    margin-top: 100px;
+    margin-bottom:2px;
+    width: 100%; 
+   
+}
+
+/* تنسيق العنوان والخطوط اللي جنبه */
+.ticker-capsule-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.ticker-capsule-header .line {
+    height: 1px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.client-ticker-wrapper {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.client-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: scrollTicker 35s linear infinite reverse;
+}
+
+.client-ticker-track:hover {
+    animation-play-state: paused;
+}
+
+/* اللوجوهات والخط العامودي الفاصل */
+.client-logo-box {
+    width: 320px; /* هون اللعبة: كبرنا العرض كثير عشان الخطوط تبعد */
+    height: 90px; /* طولنا البوكس شوي ليرتاح اللوجو */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1); 
+    padding: 0 40px; /* مسافة أمان من جوا عشان اللوجو مستحيل يدق بالخط */
+}
+
+.client-logo-box img {
+    max-width: 200px;
+    max-height: 100px; /* منعنا اللوجو يعبي البوكس للآخر */
+    object-fit: contain;
+    
+    /* شيل الـ transform: scale(1.4) اللي كان هون نهائياً */
+    
+    /* خلي الفلاتر والألوان اللي اخترتها زي ما هي */
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
 }
 
-/* Card Hover Animation */
-.vision-mission-card:hover {
-    transform: translateX(-10px); /* Moves card slightly to the left */
-    background-color: rgba(0, 0, 0, 0.55); 
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+.client-logo-box:hover img {
+    transform: scale(1.15); /* زووم خفيف ومحترم عالـ hover بس */
 }
 
-.vision-mission-card:nth-child(1):hover { border-left-color: var(--veeplex-blue); }
-.vision-mission-card:nth-child(2):hover { border-left-color: var(--veeplex-orange); }
 
-/* Text Shadows for Readability over complex backgrounds */
-.vision-mission-card h5 { text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); }
-.card-text-glass {
-    color: #ffffff;
-    font-size: 0.95rem;
-    font-weight: 500; 
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9); 
-}
-
-.bg-glass-icon {
-    background-color: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+@keyframes scrollTicker {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 20px)); 
+    }
 }
 
 
 /* ==========================================================================
-   5. OUR SERVICES (INTERACTIVE TIMELINE)
-   Description: Vertical timeline with scroll-triggered glowing effects.
+OUR SERVICES (INTERACTIVE TIMELINE)
+Description: Vertical timeline with scroll-triggered glowing effects.
    ========================================================================== */
+
 .timeline-container {
     position: relative;
     padding: 20px 0;
 }
 
 /* ==========================================================================
-   TIMELINE LINE & SCROLL PROGRESS
-   Description: The central base line and the glowing animated progress line.
+TIMELINE LINE & SCROLL PROGRESS
+Description: The central base line and the glowing animated progress line.
    ========================================================================== */
 
 /* The static vertical line in the center (Dim background) */
@@ -230,8 +359,8 @@ body {
     bottom: 0;
     left: 50%;
     width: 2px;
-    background: rgba(255, 255, 255, 0.1); /* Transparent white */
-    margin-left: -1px; /* Centers the 2px line perfectly */
+    background: rgba(255, 255, 255, 0.1); 
+    margin-left: -1px; 
     z-index: 1; 
 }
 
@@ -247,46 +376,152 @@ body {
     transition: height 0.1s ease-out; /* Smooth following movement */
 }
 
-/* --- Initial "Dimmed" State before scrolling into view --- */
+/* 1. الحالة الابتدائية (وهو طافي) */
 .service-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    opacity: 0.2; /* Dimmed initially */
-    transform: translateY(20px); /* Starts slightly lower */
-    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 0.35; 
+    filter: grayscale(100%); 
+    background: rgba(46, 52, 64, 0.4); 
+    border: 1px solid transparent; 
+    box-shadow: none;
+    transition: all 0.5s ease-out; 
+}
+
+/* Card 1 And 3 */
+#service-1 .service-card, 
+#service-3 .service-card {
+    transform: translateX(100px);
+}
+
+/* Card 2 And 4 */
+#service-2 .service-card, 
+#service-4 .service-card {
+    transform: translateX(-100px);
+}
+
+@media (max-width: 991px) {
+    .service-card, 
+    #service-1 .service-card, 
+    #service-2 .service-card, 
+    #service-3 .service-card, 
+    #service-4 .service-card {
+        transform: translateY(50px) !important;
+    }
+}
+
+
+.service-card .d-flex.justify-content-center.mt-3 {
+    margin-top: auto !important; 
+}
+
+.service-card img {
+    height: 250px; 
+    object-fit: cover; 
+    width: 100%;
 }
 
 .timeline-dot {
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    background: var(--veeplex-orange);
-    opacity: 0.2; /* Dimmed initially */
-    transition: all 0.6s ease;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px; /* السحر هون: بطلت دائرة، صارت مربع ناعم */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px); /* تأثير الزجاج */
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1.2rem;
+    font-weight: 900;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     z-index: 2;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة نطّة خفيفة (Bouncy) */
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Active "Glowing" State triggered by JavaScript Observer --- */
-.service-card.active {
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Moves to original position */
-    border: 1px solid rgba(229, 149, 0, 0.5); /* Orange border */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+@media (min-width: 992px) {
+    /* الـ + بتعني: أي سطر بيجي بعد سطر، اسحبه لفوق */
+    .service-row + .service-row {
+        margin-top: -120px !important; /* كبّر الرقم بالسالب (مثلاً -150px) إذا بدك إياهم يقربوا أكثر */
+    }
+
+    .service-row {
+        position: relative;
+        z-index: 10;
+    }
 }
 
-/* Extra hover effect after it becomes active */
-.service-card.active:hover {
-    border-color: var(--veeplex-blue);
-    transform: scale(1.02);
+/* 1. الخط المتقطع وهو مخفي */.connector-line {
+    position: absolute;
+    top: 50%;
+    height: 0; /* صفرنا الطول عشان نعتمد عالـ Border بس */
+    border-bottom: 3px dashed var(--veeplex-orange); /* خط متقطع */
+    width: 0; 
+    z-index: 1;
+    transition: width 0.3s ease-out; 
+    opacity: 0.8;
+    
+    /* الفلتر هاد بخلي الشحطات المتقطعة تضوي زي النيون */
+    filter: drop-shadow(0px 0px 6px var(--veeplex-orange)); 
 }
 
-.timeline-dot.active {
-    opacity: 1; /* Fully visible */
-    box-shadow: 0 0 20px 5px rgba(229, 149, 0, 0.8); /* Strong glowing effect */
-    transform: scale(1.5); /* Makes the dot slightly larger */
-    background: #fff; /* Changes dot center to white */
-    border: 3px solid var(--veeplex-orange);
+/* توجيه الخط حسب جهة الكرت */
+.connector-line.line-left { right: 50%; }
+.connector-line.line-right { left: 50%; }
+
+/* ==========================================================================
+   التسلسل الزمني (SEQUENCE) لما يوصل السكرول
+   ========================================================================== */
+
+/* المشهد الأول (0 ثانية): الدائرة بتضوي فوراً لما يلمسها الخط */
+.service-row.active .timeline-dot {
+    background: linear-gradient(135deg, var(--veeplex-orange), #ff6b00);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 25px rgba(229, 149, 0, 0.7), inset 0 0 10px rgba(255, 255, 255, 0.4);
+    transform: scale(1.15) rotate(5deg); /* تكبير مع ميلان خفيف جداً بعطيها ستايل ديناميكي */
+    transition: all 0.3s ease 0s;
+}
+
+.service-row {
+    margin-bottom: 1.5rem !important; /* بتجبرهم يقربوا من بعض كمسافة أخيرة */
+}
+
+/* توجيه الخط (زي ما هو ما تغير) */
+.connector-line.line-left { right: 50%; }
+.connector-line.line-right { left: 50%; }
+
+/* المشهد الثاني (0.2 ثانية): الخط الأفقي بيطلع من الدائرة للكرت */
+.service-row.active .connector-line {
+    width: 140px; /* نفس الرقم اللي زبط معك بالخطوة الماضية */
+    transition: width 0.4s ease-out 0.2s; 
+}
+
+/* المشهد الثالث (0.5 ثانية): الكرت بضوي وبيطلع بمكانه */
+.service-row.active .service-card {
+    opacity: 1; 
+    filter: grayscale(0%); 
+    background: rgba(255, 255, 255, 0.08); 
+    border: 1px solid var(--veeplex-orange); 
+    box-shadow: 0 15px 35px rgba(229, 149, 0, 0.15), inset 0 0 20px rgba(229, 149, 0, 0.05);
+    transition: all 0.5s ease-out 0.5s; 
+}
+.service-row.active {
+    z-index: 50 !important; /* هيك السطر الضاوي بنط فوق القزاز الوهمي تبع باقي الأسطر وزره بصير ينكبس */
+}
+/*  الكروت اللي عاليسار لبرّا */
+.service-row .col-lg-5.order-lg-1 {
+    padding-right: 130px; 
+}
+
+/*  الكروت اللي عاليمين لبرّا */
+.service-row .col-lg-5.order-lg-3 {
+    padding-left: 130px; 
+}
+
+.service-row.active .connector-line {
+    width: 140px; /* صغّرنا الخط (كان 140)، العب بالرقم لحد ما يلمس حفة الكرت بالضبط */
+    transition: width 0.3s ease-out 0.2s; 
 }
 
 /* Custom Scrollbar for Modals */
@@ -304,84 +539,108 @@ body {
     background: var(--veeplex-light-orange); 
 }
 
-/* ==========================================================================
-   7. OUR CLIENTS TICKER 
-   Description: Infinite scrolling animation, original colors, scale on hover.
-   ========================================================================== */
-
-.client-ticker-wrapper {
-    width: 100%;
-    overflow: hidden;
+.carousel-item .p-4 {
+    min-height: 140px; 
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
+
+/* ==========================================================================
+   CLEAN GLASSY PARTNERS TICKER
+   ========================================================================== */
+.partners-ticker-container {
+    width: 100%;
+    overflow: hidden; 
+    padding: 1rem 0;
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
-.client-ticker-track {
-    display: flex;
-    gap: 40px; 
-    width: max-content;
-    animation: scrollTicker 20s linear infinite reverse;
+.partners-ticker-track {
+    display: flex; 
+    gap: 1.5rem;
+    width: max-content; 
+    animation: scrollRight 40s linear infinite;
 }
 
-.client-ticker-track:hover {
+.partners-ticker-track:hover {
     animation-play-state: paused;
 }
 
-.client-logo-box {
-    width: 180px;
-    height: 90px;
+.partner-box {
+    width: 240px; 
+    height: 110px;
+    padding: 1.5rem;
+    background: var(--veeplex-orange, #f4bd3b8a); 
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    flex-shrink: 0;
-    position: relative; 
+    transition: all 0.3s ease;
+    text-decoration: none;
+    flex-shrink: 0; 
 }
 
-.client-logo-box:hover {
-
-    transform: scale(1.15);
-    z-index: 10; 
-}
-
-.client-logo-box img {
-    max-width: 85%; 
-    max-height: 85%;
+.partner-box img {
+    max-height: 100%;
+    max-width: 100%;
     object-fit: contain;
+    opacity: 0.85; 
+    transition: all 0.3s ease;
 }
 
-@keyframes scrollTicker {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(-50% - 20px)); 
+.partner-box:hover {
+    transform: translateY(-5px);
+    
+    filter: brightness(1.1); 
+    
+    border-color: #ffffff;
+    box-shadow: 0 10px 20px rgba(244, 188, 59, 0.4); /* شادو أورنج خفيف */
+}
+
+.partner-box:hover img {
+    opacity: 1; 
+}
+
+@keyframes scrollRight {
+    0% { transform: translateX(calc(-50% - 0.75rem)); }
+    100% { transform: translateX(0); }
+}
+
+/* تصغير عالموبايل */
+@media (max-width: 768px) {
+    .partner-box {
+        width: 180px; 
     }
 }
 
 /* ==========================================================================
-   6. MOBILE RESPONSIVE FIXES
-   ========================================================================== */
+    6. MOBILE RESPONSIVE FIXES
+========================================================================== */
+
 @media (max-width: 991px) {
     /* Hero Section adjustment for mobile */
     .hero-section {
-        height: calc(100vh + 40px);
-        clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), 50% 100%, 0 calc(100% - 40px));
-        margin-bottom: -40px;
+        height: 100vh;
     }
     
-    .about-section-bg { padding-top: 80px !important; }
+    .about-section-bg { 
+        padding-top: 80px !important; 
+    }
     
     /* Services Timeline fix for mobile: Hide the line and center cards */
     .timeline-line { display: none !important; }
     .timeline-dot { display: none !important; }
     .service-card { 
         text-align: center; 
-        /* Force active state on mobile immediately to avoid scrolling issues */
         opacity: 1; 
         transform: translateY(0);
     }
 }
+
 
