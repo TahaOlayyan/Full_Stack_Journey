@@ -12,7 +12,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // 1. Security Check: Prevent direct URL access
-// لو المستخدم حاول يدخل ع الرابط مباشرة بدون ما يبعت الفورم، بنرجعه للصفحة الرئيسية
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['submit_contact'])) {
     header("Location: index.php");
     exit();
@@ -45,8 +44,8 @@ try {
 
     // 4. Email Headers & Routing
     $mail->setFrom($_ENV['SMTP_USER'] ?? 'no-reply@veeplex.com', 'Veeplex Website');
-    $mail->addAddress('sales@veeplex.com');
-    $mail->addReplyTo($email, $name); // عشان لو ضغطت Reply يروح إيميلك للعميل مباشرة
+    $mail->addAddress('tahaolayan213@gmail.com');
+    $mail->addReplyTo($email, $name);
 
     // 5. Email Content
     $mail->isHTML(true);

@@ -18,15 +18,15 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark position-absolute w-100 top-0 px-4" style="height: 80px; background-color: transparent !important; z-index: 1030;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#home">
+            <a class="navbar-brand" href="index.php">
                 <img src="Uploads/Logo.png" alt="Veeplex Logo" class="custom-logo">
             </a>
-
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>

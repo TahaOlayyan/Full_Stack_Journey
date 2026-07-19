@@ -6,22 +6,86 @@
  * and external JS libraries initialization.
  * ==================================================================== */
 ?>
-<footer id="contact" class="bg-dark text-white py-5">
+<!-- ====================================================================
+     === FOOTER SECTION ===
+     ==================================================================== -->
+<footer id="contact" class="veeplex-footer pt-5 pb-3">
     <div class="container">
-        <div class="row text-center text-md-start">
-            <div class="col-md-6 mb-4 mb-md-0">
-                <h3 class="fw-bold text-veeplex-orange mb-3">VEEPLEX</h3>
-                <p class="text-light mb-1">Empowering the digital landscape.</p>
+        <div class="row g-5">
+
+            <!-- Column 1: Brand & Social Media -->
+            <div class="col-lg-4">
+                <img src="Uploads/Logo.png" alt="Veeplex Logo" class="footer-logo mb-3">
+                <p class="text-light opacity-75 small lh-lg pe-lg-4">
+                    Empowering organizations with cutting-edge digital transformation solutions. Bringing the future into the present.
+                </p>
+
+                <div class="social-links mt-4">
+                    <!-- Note: Make sure FontAwesome CDN is in your header.php -->
+                    <a href="https://www.linkedin.com/company/veeplex/" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/veeplex.jo?igsh=aDMwYjZncDl2OTA1" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-            <div class="col-md-6 text-md-end">
-                <h5 class="fw-bold mb-3">Contact Information</h5>
-                <p class="mb-2">📞 +962 6 222-5152</p>
-                <p class="mb-3">✉️ info@veeplex.com</p>
+
+            <!-- Column 2: Locations -->
+            <div class="col-lg-4">
+                <h5 class="fw-bold text-veeplex-orange mb-4">Our Locations</h5>
+
+                <!-- Jordan (HQ) -->
+                <div class="location-block mb-3">
+                    <h6 class="fw-bold text-white mb-1"><i class="fas fa-map-marker-alt text-veeplex-blue me-2"></i>Jordan (HQ)</h6>
+                    <p class="text-light opacity-75 small mb-1">Amir Ben Malek Street 32, Amman, Jordan<br>P.O. Box 3042 Amman 11821 Jordan</p>
+                    <p class="text-light opacity-75 small mb-1"><i class="fas fa-phone-alt me-2 text-veeplex-orange"></i>+962 6 222 5152</p>
+                    <p class="text-light opacity-75 small mb-0"><i class="fas fa-envelope me-2 text-veeplex-orange"></i>info@veeplex.com</p>
+                </div>
+
+                <!-- UAE -->
+                <div class="location-block mb-3">
+                    <h6 class="fw-bold text-white mb-1"><i class="fas fa-map-marker-alt text-veeplex-blue me-2"></i>UAE</h6>
+                    <p class="text-light opacity-75 small mb-1">IFZA Dubai - Dubai Silicon Oasis<br>Dubai - United Arab Emirates</p>
+                    <p class="text-light opacity-75 small mb-1"><i class="fas fa-phone-alt me-2 text-veeplex-orange"></i>+971 4 228 52 85</p>
+                    <p class="text-light opacity-75 small mb-0"><i class="fas fa-envelope me-2 text-veeplex-orange"></i>info@veeplex.com</p>
+                </div>
+
+                <!-- Palestine -->
+                <div class="location-block mb-0">
+                    <h6 class="fw-bold text-white mb-1"><i class="fas fa-map-marker-alt text-veeplex-blue me-2"></i>Palestine</h6>
+                    <p class="text-light opacity-75 small mb-1">Al Midan Street, GF Bayan Building<br>Al Bireh, Ramallah</p>
+                    <p class="text-light opacity-75 small mb-1"><i class="fas fa-phone-alt me-2 text-veeplex-orange"></i>+970 2 297 1396</p>
+                    <p class="text-light opacity-75 small mb-0"><i class="fas fa-envelope me-2 text-veeplex-orange"></i>info@veeplex.com</p>
+                </div>
+            </div>
+
+            <!-- Column 3: Google Maps Image -->
+            <div class="col-lg-4">
+                <h5 class="fw-bold text-veeplex-orange mb-4">Find Us</h5>
+                <!-- غير مسار الصورة هون لسكرين شوت حقيقية من الخريطة -->
+                <div class="footer-map-container rounded-4 overflow-hidden position-relative shadow-lg border border-secondary">
+                    <img src="Uploads/Location.png" alt="Veeplex Location Map" class="img-fluid w-100 object-fit-cover" style="height: 220px;">
+                    <div class="map-overlay d-flex align-items-center justify-content-center">
+                        <a href="https://www.google.com/maps/place/veeplex/@31.986897,35.845797,781m/data=!3m2!1e3!4b1!4m6!3m5!1s0x151ca1bab6257321:0x45c0906d7dc2e243!8m2!3d31.986897!4d35.8483773!16s%2Fg%2F11tkbnx96r?entry=ttu&g_ep=EgoyMDI2MDcxMi4wIKXMDSoASAFQAw%3D%3D"
+                            target="_blank" class="btn btn-outline-light rounded-pill px-4 fw-bold">
+                            <i class="fas fa-location-arrow me-2"></i>Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Copyright Line -->
+        <hr class="border-secondary mt-5 mb-4 opacity-25">
+        <div class="row align-items-center">
+            <div class="col-12 text-center">
+                <p class="text-light opacity-50 small mb-0">&copy; <?php echo date("Y"); ?> Veeplex. All rights reserved.</p>
             </div>
         </div>
     </div>
 </footer>
 
+<!-- ====================================================================
+     === CONTACT MODAL (Unchanged) ===
+     ==================================================================== -->
 <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -49,6 +113,7 @@
         </div>
     </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
